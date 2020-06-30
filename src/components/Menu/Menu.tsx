@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Wrapper } from ".";
+import { NavigationContext } from "utils/contexts";
+import { Item, Wrapper } from ".";
 
-const Menu = () => (
-  <Wrapper>
-    <h1>Menu</h1>
-    <ul>
-      <li>Commons</li>
-      <li>Customers</li>
-      <li>Packages</li>
-    </ul>
-  </Wrapper>
-);
+const Menu: React.FC = () => {
+  const { data, status } = useContext(NavigationContext);
+
+  return (
+    <Wrapper>
+      <h1>Menu</h1>
+      {status === "idle" && <div>Loading...</div>}
+      {status === "rejected" && <div>Call for data was rejected</div>}
+      {status === "fullfilled" && (
+        <ul>
+          {data?.map(({ title }) => (
+            <Item key={title} title={title} />
+          ))}
+        </ul>
+      )}
+    </Wrapper>
+  );
+};
 
 export default Menu;
