@@ -103,6 +103,49 @@ const GlobalStyle = createGlobalStyle`
   .reverse {
     color: var(--color-white);
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+
+    button {
+      margin-left: 5rem;
+      background-color: var(--color-buff);
+      transition: all 0.2s;
+      border: 0;
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-olivine);
+        color: var(--color-white);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+
+    span {
+      min-width: 5rem;
+      padding-right: 0.5rem;
+      text-align: right;
+
+      &::after {
+        content: ':';
+      }
+    }
+
+    input {
+      flex-grow: 1;
+      min-width: 10rem;
+    }
+  }
 `;
 
 export default GlobalStyle;

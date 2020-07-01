@@ -4,7 +4,7 @@ import { NavigationContext } from "utils/contexts";
 import { Wrapper } from ".";
 
 const Actions: React.FC = () => {
-  const { category, subcategory } = useContext(NavigationContext);
+  const { category, deleteFlow, subcategory } = useContext(NavigationContext);
 
   const showModal = () =>
     alert(`So the category is "${category}" and subcategory "${subcategory}"`);
@@ -27,7 +27,12 @@ const Actions: React.FC = () => {
           OR 🥁🥁🥁
           <br />
           <br />
-          you can remove the category
+          <button type="button" className="reverse" onClick={deleteFlow}>
+            <span role="img" aria-label="trash">
+              🗑️
+            </span>{" "}
+            you can remove the category
+          </button>
         </div>
       )}
     </Wrapper>

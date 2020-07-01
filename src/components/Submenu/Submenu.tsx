@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import { NavigationContext } from "utils/contexts";
 import { FlowType } from "utils/types";
+import { StatusEnum } from "utils/enums";
 import { Form, Item, Wrapper } from ".";
 
 const Submenu: React.FC = () => {
@@ -13,8 +14,10 @@ const Submenu: React.FC = () => {
   return (
     <Wrapper>
       <h1>Submenu</h1>
-      {status === "fullfilled" && !category && <div>Pick a category</div>}
-      {status === "fullfilled" && category && (
+      {status === StatusEnum.fullfilled && !category && (
+        <div>Pick a category</div>
+      )}
+      {status === StatusEnum.fullfilled && category && (
         <>
           <ul>
             {getFlows().map((props: FlowType) => (
